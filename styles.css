@@ -7,23 +7,20 @@
 }
 
 :root {
-  --desk: #c4a074;
-  --desk-dark: #9a7348;
-  --cover: #6b4c3b;
-  --cover-light: #8a6349;
-  --paper: #fffef7;
-  --paper-line: rgba(180, 160, 130, 0.35);
-  --margin-red: rgba(210, 95, 85, 0.45);
-  --ink: #2c2416;
-  --ink-light: #5c4f3a;
-  --ink-faded: #9a8b78;
-  --pencil: #6b5c48;
-  --accent: #b85c4a;
-  --accent-dark: #964a3a;
-  --done-ink: #a89888;
-  --line-height: 1.75rem;
+  --bg: #141414;
+  --surface: #1f1f1f;
+  --surface-raised: #282828;
+  --text: #f2f2f2;
+  --text-muted: #9a9a9a;
+  --border: #3a3a3a;
+  --spray-pink: #ff2d6a;
+  --spray-cyan: #00e5c0;
+  --spray-yellow: #ffe566;
+  --accent: var(--spray-pink);
+  --accent-hover: #e0255a;
+  --done-text: #666;
   --tap: 40px;
-  --hole-size: 0.5rem;
+  --radius: 6px;
 }
 
 html {
@@ -31,137 +28,83 @@ html {
 }
 
 body {
-  font-family: "Patrick Hand", "Segoe Print", cursive;
-  background: var(--desk);
-  color: var(--ink);
-  line-height: var(--line-height);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.45;
   min-height: 100vh;
   min-height: 100dvh;
+  background-image:
+    radial-gradient(circle at 15% 10%, rgba(255, 45, 106, 0.06), transparent 40%),
+    radial-gradient(circle at 85% 90%, rgba(0, 229, 192, 0.05), transparent 40%);
 }
 
-.scene {
-  min-height: 100vh;
-  min-height: 100dvh;
-  padding: max(0.75rem, env(safe-area-inset-top))
-    max(0.625rem, env(safe-area-inset-right))
-    max(1rem, env(safe-area-inset-bottom))
-    max(0.625rem, env(safe-area-inset-left));
-  background:
-    radial-gradient(ellipse at 20% 0%, rgba(255, 240, 210, 0.25), transparent 55%),
-    radial-gradient(ellipse at 80% 100%, rgba(80, 50, 30, 0.15), transparent 50%),
-    linear-gradient(160deg, #d4b088 0%, var(--desk) 45%, var(--desk-dark) 100%);
-}
-
-.notebook {
-  position: relative;
+.app {
   max-width: 640px;
   margin: 0 auto;
-  filter: drop-shadow(0 4px 6px rgba(44, 30, 15, 0.18))
-    drop-shadow(0 14px 28px rgba(44, 30, 15, 0.14));
-}
-
-.notebook-cover {
-  position: absolute;
-  inset: -0.35rem -0.35rem -0.35rem -0.2rem;
-  border-radius: 6px 14px 14px 6px;
-  background:
-    linear-gradient(135deg, var(--cover-light) 0%, var(--cover) 40%, #523a2e 100%);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.12),
-    inset -3px 0 8px rgba(0, 0, 0, 0.15);
-  z-index: 0;
-}
-
-.notebook-holes {
-  position: absolute;
-  left: 0.55rem;
-  top: 1.25rem;
-  bottom: 1.25rem;
-  width: var(--hole-size);
-  z-index: 2;
-  background-image: radial-gradient(
-    circle,
-    rgba(60, 40, 25, 0.55) 0.18rem,
-    transparent 0.2rem
-  );
-  background-size: 100% calc(var(--line-height) * 2);
-  background-repeat: repeat-y;
-  pointer-events: none;
-}
-
-.notebook-page {
-  position: relative;
-  z-index: 1;
-  margin-left: 0.15rem;
-  padding: 0.875rem 0.75rem 1rem 2rem;
-  border-radius: 2px 10px 10px 2px;
-  background-color: var(--paper);
-  background-image:
-    linear-gradient(var(--margin-red) 0, var(--margin-red) 100%),
-    repeating-linear-gradient(
-      transparent 0,
-      transparent calc(var(--line-height) - 1px),
-      var(--paper-line) calc(var(--line-height) - 1px),
-      var(--paper-line) var(--line-height)
-    );
-  background-size:
-    2px 100%,
-    100% var(--line-height);
-  background-position:
-    1.35rem 0,
-    0 0.65rem;
-  background-repeat: no-repeat, repeat;
-  box-shadow:
-    inset 0 0 40px rgba(210, 190, 150, 0.12),
-    inset 1px 0 0 rgba(255, 255, 255, 0.6);
+  padding: max(0.75rem, env(safe-area-inset-top))
+    max(0.75rem, env(safe-area-inset-right))
+    max(1rem, env(safe-area-inset-bottom))
+    max(0.75rem, env(safe-area-inset-left));
+  border-left: 4px solid var(--spray-pink);
+  min-height: 100dvh;
 }
 
 .header {
-  margin-bottom: 0.5rem;
-  padding-bottom: 0.25rem;
-  border-bottom: 1.5px solid rgba(44, 36, 22, 0.12);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.625rem;
+  border-bottom: 2px solid var(--border);
 }
 
 .header-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .header h1 {
-  font-family: "Caveat", cursive;
+  font-family: "Bebas Neue", impact, sans-serif;
   font-size: 1.75rem;
-  font-weight: 700;
-  color: var(--ink);
-  line-height: 1.2;
-  transform: rotate(-0.5deg);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--text);
+  text-shadow:
+    2px 2px 0 var(--spray-pink),
+    -1px -1px 0 var(--spray-cyan);
 }
 
 .note-count {
   flex-shrink: 0;
-  min-width: 1.625rem;
-  height: 1.625rem;
-  padding: 0 0.375rem;
+  min-width: 1.75rem;
+  height: 1.75rem;
+  padding: 0 0.5rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: "Patrick Hand", cursive;
-  font-size: 0.875rem;
-  color: var(--ink-light);
-  background: rgba(255, 252, 240, 0.7);
-  border: 1.5px dashed rgba(44, 36, 22, 0.2);
-  border-radius: 999px;
-  transform: rotate(1deg);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--bg);
+  background: var(--spray-yellow);
+  border-radius: 4px;
+  transform: skewX(-6deg);
 }
 
 .note-form {
   display: flex;
-  gap: 0.375rem;
+  gap: 0.5rem;
   align-items: stretch;
-  margin-bottom: 0.25rem;
-  padding: 0.25rem 0 0.375rem;
-  border-bottom: 1.5px dashed rgba(44, 36, 22, 0.1);
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.note-form:focus-within {
+  border-color: var(--spray-cyan);
 }
 
 .note-form textarea {
@@ -169,65 +112,60 @@ body {
   min-width: 0;
   border: none;
   resize: none;
-  min-height: calc(var(--line-height) * 2);
+  min-height: 2.75rem;
   font: inherit;
-  font-size: 1.0625rem;
-  line-height: var(--line-height);
-  color: var(--ink);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--text);
   background: transparent;
   outline: none;
-  padding: 0.125rem 0.25rem;
+  padding: 0.25rem 0.375rem;
 }
 
 .note-form textarea::placeholder {
-  color: var(--ink-faded);
-  font-style: italic;
+  color: var(--text-muted);
 }
 
 .btn {
-  font-family: "Patrick Hand", cursive;
-  font-size: 1rem;
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   border: none;
   border-radius: 4px;
-  padding: 0.25rem 0.625rem;
+  padding: 0.375rem 0.75rem;
   cursor: pointer;
-  transition: transform 0.12s, background 0.15s, box-shadow 0.15s;
+  transition: background 0.15s, opacity 0.15s;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
 }
 
 .btn-primary {
-  background: linear-gradient(180deg, #c86858 0%, var(--accent) 100%);
-  color: #fffef8;
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.2) inset,
-    0 2px 4px rgba(100, 50, 40, 0.25);
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+  background: var(--accent);
+  color: white;
 }
 
 .btn-primary:hover,
 .btn-primary:active {
-  background: linear-gradient(180deg, #b85848 0%, var(--accent-dark) 100%);
-  transform: translateY(1px);
+  background: var(--accent-hover);
 }
 
 .btn-add {
   flex-shrink: 0;
   align-self: flex-end;
-  padding-inline: 0.75rem;
   min-height: var(--tap);
-  transform: rotate(0.5deg);
 }
 
 .btn-ghost {
   background: transparent;
-  color: var(--pencil);
+  color: var(--text-muted);
 }
 
 .btn-ghost:hover,
 .btn-ghost:active {
-  background: rgba(180, 160, 130, 0.15);
-  color: var(--ink);
+  background: var(--surface-raised);
+  color: var(--text);
 }
 
 .btn-icon {
@@ -238,8 +176,8 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  font-size: 1.125rem;
+  border-radius: 4px;
+  font-size: 1.0625rem;
   line-height: 1;
 }
 
@@ -247,6 +185,7 @@ body {
   list-style: none;
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
 }
 
 .notes-list:empty {
@@ -255,10 +194,9 @@ body {
 
 .empty-state {
   text-align: center;
-  color: var(--ink-faded);
+  color: var(--text-muted);
   padding: 1.5rem 0.5rem;
-  font-size: 1rem;
-  font-style: italic;
+  font-size: 0.875rem;
 }
 
 .empty-state.hidden {
@@ -266,117 +204,119 @@ body {
 }
 
 .note-card {
-  padding: 0.125rem 0.25rem 0.125rem 0;
-  border-bottom: 1px dashed rgba(44, 36, 22, 0.1);
-  background: transparent;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-left: 4px solid var(--spray-cyan);
+  border-radius: var(--radius);
+  padding: 0.625rem 0.5rem 0.5rem;
 }
 
-.note-card:last-child {
-  border-bottom: none;
+.note-card.done {
+  border-left-color: var(--text-muted);
+  opacity: 0.65;
 }
 
 .note-card.done .note-text {
   text-decoration: line-through;
-  text-decoration-color: var(--done-ink);
-  text-decoration-thickness: 1.5px;
-  color: var(--done-ink);
+  color: var(--done-text);
 }
 
 .note-row {
   display: flex;
   align-items: flex-start;
-  gap: 0.125rem;
+  gap: 0.25rem;
 }
 
 .note-text {
   flex: 1;
   min-width: 0;
-  font-size: 1.0625rem;
-  line-height: var(--line-height);
+  font-size: 0.9375rem;
+  line-height: 1.45;
   white-space: pre-wrap;
   word-break: break-word;
 }
 
 .note-date {
   display: block;
-  font-size: 0.8125rem;
-  color: var(--ink-faded);
-  line-height: 1.25rem;
-  margin-top: -0.125rem;
-  padding-left: 0.125rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-top: 0.375rem;
 }
 
 .note-actions {
   display: flex;
   flex-shrink: 0;
   gap: 0;
-  margin-top: -0.125rem;
 }
 
 .note-edit-area {
   width: 100%;
-  border: 1.5px dashed rgba(44, 36, 22, 0.25);
+  border: 2px solid var(--border);
   border-radius: 4px;
-  padding: 0.25rem 0.375rem;
+  padding: 0.5rem;
   font: inherit;
-  font-size: 1.0625rem;
-  line-height: var(--line-height);
+  font-size: 0.9375rem;
+  line-height: 1.45;
   resize: none;
-  min-height: calc(var(--line-height) * 2);
+  min-height: 2.75rem;
   outline: none;
-  margin-bottom: 0.25rem;
-  background: rgba(255, 252, 240, 0.5);
-  color: var(--ink);
+  margin-bottom: 0.5rem;
+  background: var(--surface-raised);
+  color: var(--text);
 }
 
 .note-edit-area:focus {
-  border-color: var(--accent);
-  border-style: solid;
-  background: rgba(255, 252, 240, 0.85);
+  border-color: var(--spray-cyan);
 }
 
 .edit-actions {
   display: flex;
-  gap: 0.375rem;
+  gap: 0.5rem;
   justify-content: flex-end;
 }
 
 .edit-actions .btn {
   min-height: var(--tap);
-  padding-inline: 0.875rem;
+}
+
+.edit-actions .btn-ghost {
+  border: 2px solid var(--border);
 }
 
 .btn-done {
-  color: var(--accent);
+  color: var(--spray-cyan);
 }
 
 .btn-done.active {
-  background: rgba(184, 92, 74, 0.15);
-  color: var(--accent-dark);
-  box-shadow: inset 0 0 0 1.5px rgba(184, 92, 74, 0.35);
+  background: rgba(0, 229, 192, 0.15);
+  color: var(--spray-cyan);
+  box-shadow: inset 0 0 0 2px rgba(0, 229, 192, 0.4);
 }
 
 .btn-done.active:hover,
 .btn-done.active:active {
-  background: rgba(184, 92, 74, 0.25);
+  background: rgba(0, 229, 192, 0.25);
 }
 
 @media (min-width: 480px) {
-  .scene {
-    padding: 1.5rem 1rem 2rem;
-  }
-
-  .notebook-page {
-    padding: 1.125rem 1.25rem 1.5rem 2.5rem;
+  .app {
+    padding: 1.25rem 1rem 2rem;
   }
 
   .header h1 {
     font-size: 2rem;
   }
 
-  .note-form {
-    margin-bottom: 0.375rem;
-    padding-bottom: 0.5rem;
+  .note-form,
+  .notes-list {
+    gap: 0.625rem;
+  }
+
+  .note-card {
+    padding: 0.75rem 0.625rem 0.625rem;
   }
 }
 
@@ -384,8 +324,10 @@ body {
   .header h1 {
     font-size: 2.25rem;
   }
+}
 
-  .notebook {
-    transform: rotate(-0.3deg);
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
   }
 }
