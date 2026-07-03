@@ -3,32 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mini Notatblokk</title>
+  <meta name="theme-color" content="#c9a87c">
+  <title>Thors notatblokk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="app">
-    <header class="header">
-      <div class="header-row">
-        <h1>Thors notatblokk</h1>
-        <span class="note-count" id="noteCount">0</span>
+  <div class="scene">
+    <article class="notebook">
+      <div class="notebook-cover" aria-hidden="true"></div>
+      <div class="notebook-holes" aria-hidden="true"></div>
+      <div class="notebook-page">
+        <header class="header">
+          <div class="header-row">
+            <h1>Thors notatblokk</h1>
+            <span class="note-count" id="noteCount">0</span>
+          </div>
+        </header>
+
+        <form class="note-form" id="noteForm">
+          <textarea
+            id="noteInput"
+            placeholder="Skriv et nytt notat..."
+            rows="2"
+            autofocus
+          ></textarea>
+          <button type="submit" class="btn btn-primary btn-add">Legg til</button>
+        </form>
+
+        <section class="notes-section">
+          <ul class="notes-list" id="notesList"></ul>
+          <p class="empty-state" id="emptyState">Tom side — skriv noe over ✎</p>
+        </section>
       </div>
-    </header>
-
-    <form class="note-form" id="noteForm">
-      <textarea
-        id="noteInput"
-        placeholder="Nytt notat..."
-        rows="2"
-        autofocus
-      ></textarea>
-      <button type="submit" class="btn btn-primary btn-add">Legg til</button>
-    </form>
-
-    <section class="notes-section">
-      <ul class="notes-list" id="notesList"></ul>
-      <p class="empty-state" id="emptyState">Ingen notater ennå</p>
-    </section>
+    </article>
   </div>
 
   <script src="app.js"></script>
